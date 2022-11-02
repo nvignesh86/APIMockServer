@@ -1,0 +1,74 @@
+openapi: '3.0.2'
+info:
+  title: Cats
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+paths:
+  /cat:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  
+                  firstName:
+                    type: string
+                    x-faker: name.firstName
+                  lastName:
+                    type: string
+                    x-faker: name.lastName
+                  fullName:
+                    type: string
+                    x-faker: '{{name.firstName}} {{name.lastName}}'
+                  age:
+                    type: string
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                {
+                  "name":"test"
+                }
+  /testpost:
+    post:
+      responses: 
+        '200':
+          description: Ok
+          content:
+            application/json:
+              example: 
+                {
+                  "post":"success"
+                }
+  /testput:
+    put:
+      responses: 
+        '200':
+          description: Ok
+          content:
+            application/json:
+              example: 
+                {
+                  "post":"success"
+                }                                
+  /testfail:
+    get:
+      responses:
+        '400':
+          description: Ok,
+          content:
+            application/json:
+              example:
+                {
+                    "error":"failure"
+                }
+
